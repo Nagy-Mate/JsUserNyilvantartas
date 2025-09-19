@@ -12,8 +12,8 @@ db.prepare(
 
 export const getUsers = () => db.prepare(`SELECT * FROM users`).all();
 
-export const getUser = () =>
-  db.prepare(`SELECT * FORM users WHERE id = ?`).get(id);
+export const getUser = (id) =>
+  db.prepare(`SELECT * FROM users WHERE id = ?`).get(id);
 
 export const saveUser = (name, email, password) =>
   db
@@ -26,25 +26,27 @@ export const updateUser = (id, name, email, password) =>
     .run(name, email, password, id);
 
 export const deleteUser = (id) =>
-  db.prepare(`DELETE FROM users WHERE id = ?`).run();
+  db.prepare(`DELETE FROM users WHERE id = ?`).run(id);
 
 const users = [
   {
     id: 1,
     name: "Kiss János",
-    email: "Debrecen, Alma utca 10.",
-    password: 11111111,
+    email: "example@gmail.com",
+    password: "abcd1234",
   },
   {
     id: 2,
     name: "Nagy Éva",
-    email: "Győr, Körte utca 22.",
-    password: 22222222,
+    email: "example@gmail.com",
+    password: "abcd1234",
   },
   {
     id: 3,
     name: "Tóth László",
-    email: "Szeged, Barackos út 5.",
-    password: 33333333,
+    email: "example@gmail.com",
+    password: "abcd1234",
   },
 ];
+
+//for (const user of users) saveUser(user.name, user.email, user.password);
