@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bejelentkezés</title>
+  </head>
+  <body>
+    <header>
+      <div class="right">
+        <div id="showLogin">Bejelentkezés</div>
+        <div id="showRegister">Regisztráció</div>
+      </div>
+    </header>
+
+    <div id="loginBox" style="display: none">
+      <h2>Bejelentkezés</h2>
+      <p class="loginElements">
+        <label for="emailInputLogin">Email cím: </label>
+        <input
+          type="email"
+          name="emailInputLogin"
+          id="emailInputLogin"
+          required
+        />
+      </p>
+      <p class="loginElements">
+        <label for="pwdInputLogin">Jelszó: </label>
+        <input
+          type="password"
+          name="pwdInputLogin"
+          id="pwdInputLogin"
+          required
+        />
+      </p>
+
+      <button id="loginBtn" type="submit">Bejelentkezés</button>
+    </div>
+
+    <div id="registerBox" style="display: none">
+      <h2>Regisztráció</h2>
+      <p class="registerElements">
+        <label for="emailInputRegister">Email cím: </label>
+        <input
+          type="email"
+          name="emailInputRegister"
+          id="emailInputRegister"
+          required
+        />
+      </p>
+
+      <p class="registerElements">
+        <label for="pwdInputRegister1">Jelszó: </label>
+        <input
+          type="password"
+          name="pwdInputRegister1"
+          id="pwdInputRegister1"
+          required
+        />
+      </p>
+
+      <p class="registerElements">
+        <label for="pwdInputRegister2">Jelszó ismét: </label>
+        <input
+          type="password"
+          name="pwdInputRegister2"
+          id="pwdInputRegister2"
+          required
+        />
+      </p>
+
+      <button id="registerBtn" type="submit">Regisztráció</button>
+    </div>
+
+    <div class="alerts">
+      <div id="wrongEmail">Hibás email cím</div>
+      <div id="wrongPwd1">Nem egyezik a két jelszó</div>
+      <div id="wrongPwd2">Hiányzó jelszó</div>
+      <div id="sLogin">Sikeres bejelentkezés</div>
+      <div id="sRegister">Sikeres regisztráció</div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

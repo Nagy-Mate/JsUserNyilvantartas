@@ -1,0 +1,146 @@
+header {
+  background-color: #3f72af;
+  color: white;
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+#showLogin,
+#showRegister {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-left: 15px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#showLogin {
+  background-color: #112d4e; 
+}
+#showLogin:hover {
+  background-color: #0b2140;
+}
+
+#showRegister {
+  background-color: #f9a826; 
+}
+#showRegister:hover {
+  background-color: #d4881d;
+}
+
+body {
+  background-color: #eaf4fc; 
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+#loginBox,
+#registerBox {
+  text-align: left;
+  margin: 40px auto;
+  width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px 30px;
+  display: none;
+}
+
+#loginBox h2,
+#registerBox h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #4e89ae;
+}
+
+.registerElements,
+.loginElements {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registerElements label,
+.loginElements label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #4cafef;
+  outline: none;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4cafef;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+button:hover {
+  background-color: #3a8edc;
+}
+
+#wrongEmail,
+#wrongPwd1,
+#wrongPwd2 {
+  background-color: #eb1212; 
+  color: white;
+}
+#sLogin,
+#sRegister {
+  background-color: #4caf50;
+  color: white;
+}
+
+#wrongEmail,
+#wrongPwd1,
+#wrongPwd2,
+#sLogin,
+#sRegister {
+  padding: 12px 18px;
+  border-radius: 7px;
+  width: 220px;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  margin: 20px auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+#wrongEmail.show,
+#wrongPwd1.show,
+#wrongPwd2.show,
+#sLogin.show,
+#sRegister.show {
+  display: block;
+  opacity: 1;
+}
