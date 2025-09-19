@@ -12,8 +12,11 @@ db.prepare(
 
 export const getUsers = () => db.prepare(`SELECT * FROM users`).all();
 
-export const getUser = (id) =>
+export const getUserById = (id) =>
   db.prepare(`SELECT * FROM users WHERE id = ?`).get(id);
+
+export const getUserByEmail = (email) =>
+  db.prepare(`SELECT * FROM users WHERE email = ?`).get(email);
 
 export const saveUser = (name, email, password) =>
   db
@@ -32,19 +35,19 @@ const users = [
   {
     id: 1,
     name: "Kiss János",
-    email: "example@gmail.com",
+    email: "example1@gmail.com",
     password: "abcd1234",
   },
   {
     id: 2,
     name: "Nagy Éva",
-    email: "example@gmail.com",
+    email: "example2@gmail.com",
     password: "abcd1234",
   },
   {
     id: 3,
     name: "Tóth László",
-    email: "example@gmail.com",
+    email: "example3@gmail.com",
     password: "abcd1234",
   },
 ];

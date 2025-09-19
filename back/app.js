@@ -18,7 +18,19 @@ app.get("/users", (req, res) => {
 
 app.get("/users/:id", (req, res) => {
   try {
-    const user = db.getUser(req.params.id);
+    const user = db.getUserById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found! " });
+    }
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({ message: `${err}` });
+  }
+});
+
+app.post("/users/byEmail", (req, res) => {
+  try {
+    const user = db.getUserByEmail(req.body.email);
     if (!user) {
       return res.status(404).json({ message: "User not found! " });
     }
