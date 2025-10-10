@@ -1,3 +1,5 @@
+const baseUrl = "http://localhost:3000";
+
 document.getElementById("showLogin").addEventListener("click", function () {
   changeBoxVisibility("loginBox", "registerBox");
 });
@@ -6,19 +8,30 @@ document.getElementById("showRegister").addEventListener("click", function () {
   changeBoxVisibility("registerBox", "loginBox");
 });
 
-document.getElementById("loginBtn").addEventListener("click", function () {
-  const emailInputLogin = document.getElementById("emailInputLogin").value;
-  console.log("megnyomva");
-  if (!valid(emailInputLogin) || !emailInputLogin.trim()) {
-    showAlerts("wrongEmail");
-  } else if (!document.getElementById("pwdInputLogin").value.trim()) {
-    showAlerts("wrongPwd2");
-  } else {
-    clearInputs();
-    changeBoxVisibility("loginBox", "registerBox");
-    showAlerts("sLogin");
-  }
-});
+document
+  .getElementById("loginBtn")
+  .addEventListener("click", async function () {
+    const emailInputLogin = document
+      .getElementById("emailInputLogin")
+      .value.trim();
+    const pwdInputLogin = document.getElementById("pwdInputLogin").value.trim();
+
+    if (!valid(emailInputLogin) || !emailInputLogin.trim()) {
+      showAlerts("wrongEmail");
+    } else if (!pwdInputLogin) {
+      showAlerts("wrongPwd2");
+    } else {
+      clearInputs();
+      changeBoxVisibility("loginBox", "registerBox");
+
+      const res = await login(emailInputLogin, pwdInputLogin);
+      console.log(res);
+      console.log(res.body);
+      if (res.ok) {
+        showAlerts("sLogin");
+      }
+    }
+  });
 
 document.getElementById("registerBtn").addEventListener("click", function () {
   const emailInputRegister =
@@ -31,13 +44,12 @@ document.getElementById("registerBtn").addEventListener("click", function () {
     document.getElementById("pwdInputRegister2").value
   ) {
     showAlerts("wrongPwd1");
-  }else if (!document.getElementById("pwdInputRegister1").value.trim()) {
+  } else if (!document.getElementById("pwdInputRegister1").value.trim()) {
     showAlerts("wrongPwd2");
   } else {
     clearInputs();
     changeBoxVisibility("registerBox", "loginBox");
     showAlerts("sRegister");
-
   }
 });
 
@@ -71,7 +83,6 @@ function changeBoxVisibility(toShow, toRemove) {
   clearInputs();
 }
 
-
 function showAlerts(alertId) {
   const element = document.getElementById(alertId);
   element.style.display = "block";
@@ -81,6 +92,16 @@ function showAlerts(alertId) {
 
     setTimeout(() => {
       element.style.display = "none";
-    }, 5000); 
+    }, 5000);
   }, 2000);
+}
+
+async function login(email, password) {
+  const res = await fetch(`${baseUrl}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+
+  return res;
 }
