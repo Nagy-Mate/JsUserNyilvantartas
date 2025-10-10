@@ -76,7 +76,7 @@ app.put("/users/:id", async (req, res) => {
     if (updateUser.changes != 1) {
       return res.status(501).json({ message: "User update failed! " });
     }
-    res.status(200).json({ name, email, password });
+    res.status(200).json({ name, email, hashedPwd });
   } catch (err) {
     res.status(500).json({ message: `${err}` });
   }
